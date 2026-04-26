@@ -20,12 +20,9 @@ public class KafkaProducerConfig {
     public ProducerFactory<String, CustomMessage> producerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-
-        return new DefaultKafkaProducerFactory<>(
-                config,
-                new StringSerializer(),
-                new JacksonJsonSerializer<>()
-        );
+        config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JacksonJsonSerializer.class);
+        return new DefaultKafkaProducerFactory<>(config);
     }
 
     @Bean
