@@ -1,4 +1,4 @@
-package yago.ferreira.producer.domain;
+package yago.ferreira.consumer.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
